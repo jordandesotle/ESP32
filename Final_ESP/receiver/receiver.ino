@@ -26,13 +26,9 @@ const bool DEBUG_MODE = true;
 /***************************** Constants ******************************/
 
 //Must match the sender structure
-// typedef struct data {
-//   int x;
-//   int y;
-// };
-
 typedef struct data {
-  String s;
+  int x;
+  int y;
 };
 
 /***************************** Variables ******************************/
@@ -69,23 +65,15 @@ void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) 
 void print_data(data d) {
 
   // Name of vaiables in order of struct
-  // const char* fieldNames[] = {
-  //   "x",
-  //   "y"
-  // };
-
   const char* fieldNames[] = {
-    "s"
+    "x",
+    "y"
   };
 
   // Value of variables in order of struct
-  // const void* fieldPointers[] = {
-  //   &d.x,
-  //   &d.y
-  // };
-
   const void* fieldPointers[] = {
-    &d.s
+    &d.x,
+    &d.y
   };
 
   int numFields = sizeof(fieldNames) / sizeof(fieldNames[0]);
@@ -99,13 +87,10 @@ void print_data(data d) {
     // Add a condition for each variable in the struct and change the datatype
     Serial.print(fieldName);
     Serial.print(": ");
-    // if (strcmp(fieldName, "x") == 0) {
-    //   Serial.println(*static_cast<const int*>(fieldValuePtr));
-    // } else if (strcmp(fieldName, "y") == 0) {
-    //   Serial.println(*static_cast<const int*>(fieldValuePtr));
-    // }
-    if (strcmp(fieldName, "s") == 0) {
-      Serial.println(*static_cast<const string*>(fieldValuePtr));
+    if (strcmp(fieldName, "x") == 0) {
+      Serial.println(*static_cast<const int*>(fieldValuePtr));
+    } else if (strcmp(fieldName, "y") == 0) {
+      Serial.println(*static_cast<const int*>(fieldValuePtr));
     }
   }
   Serial.println("----Data Packet----");

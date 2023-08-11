@@ -102,12 +102,8 @@ void send_data(data d) {
 data package_data() {
 
   //Assign values
-  // test.x = random(0,20);
-  // test.y = random(0,20);
-
-  test.x = 13;
-  test.y = 10;
-
+  test.x = random(0,20);
+  test.y = random(0,20);
 
   data d = test;
   return d;
